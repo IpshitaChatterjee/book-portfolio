@@ -2,17 +2,18 @@
 
 import { useState } from "react";
 
-// ─── Asset URLs (from Figma MCP, valid for 7 days) ────────────────────────────
+// ─── Asset URLs (local — served from /public/images/) ─────────────────────────
 
-const IMG_PORTRAIT      = "/images/portrait.png";
-const IMG_STAR          = "https://www.figma.com/api/mcp/asset/869dbce5-fa43-4d60-8d72-e8078d562af3";
-const IMG_CHASE_LOGO    = "https://www.figma.com/api/mcp/asset/6a5ae546-0234-4cc7-88bb-1e29551f3806";
-const IMG_CHASE_PHOTO   = "https://www.figma.com/api/mcp/asset/fc46ab82-aded-492a-994e-1829fa6a4bc4";
-const IMG_EY_LOGO       = "https://www.figma.com/api/mcp/asset/8944a721-c15b-4a53-a971-e76a35ce3468";
-const IMG_CANVA_LOGO    = "https://www.figma.com/api/mcp/asset/72824ae3-d6c2-434b-9e1e-3949a88f1a63";
-const IMG_INFOSYS_LOGO  = "https://www.figma.com/api/mcp/asset/84e44869-8351-4ae1-b922-2a3d7abadfa8";
-const IMG_MINUS         = "https://www.figma.com/api/mcp/asset/1c843de9-4bde-4916-8354-c59d9c345abd";
-const IMG_PLUS          = "https://www.figma.com/api/mcp/asset/6274f1a7-0b95-4398-a58c-15dcb3b93b49";
+const IMG_PORTRAIT       = "/images/portrait.png";
+const IMG_STAR           = "/images/star.png";
+const IMG_CHASE_LOGO     = "/images/chase-logo.png";
+const IMG_CHASE_PHOTO    = "/images/chase-photo.jpg";
+const IMG_EY_LOGO        = "/images/ey-logo.png";
+const IMG_EY_PHOTO       = "/images/ey-photo.jpg";
+const IMG_UXREACTOR_LOGO = "/images/uxreactor-logo.png";
+const IMG_INFOSYS_LOGO   = "/images/infosys-logo.png";
+const IMG_MINUS          = "/images/minus.png";
+const IMG_PLUS           = "/images/plus.png";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -74,7 +75,7 @@ function WorkItem({ role, period, logo, expanded, onToggle, hasBorder = true, de
           pointerEvents: "auto",
         }}
       >
-        <img src={expanded ? IMG_MINUS : IMG_PLUS} alt="" style={{ width: 24, height: 24, flexShrink: 0, display: "block" }} />
+        <img src={expanded ? IMG_MINUS : IMG_PLUS} alt="" style={{ width: 24, height: 24, flexShrink: 0, display: "block", filter: "grayscale(1)" }} />
         <div style={{ flex: "1 0 0", display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%" }}>
             <p style={{
@@ -126,6 +127,7 @@ function WorkItem({ role, period, logo, expanded, onToggle, hasBorder = true, de
                     width: "227.46%",
                     maxWidth: "none",
                     display: "block",
+                    filter: "grayscale(1)",
                   }}
                 />
               </div>
@@ -240,7 +242,7 @@ export function AboutMeRightPage() {
   const toggle = (idx: number) => setExpanded(expanded === idx ? null : idx);
 
   return (
-    <div style={{ position: "absolute", inset: 0 }}>
+    <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
 
       {/* Star icon + Main heading */}
       <div style={{
@@ -304,19 +306,25 @@ export function AboutMeRightPage() {
           }
           expanded={expanded === 1}
           onToggle={() => toggle(1)}
+          description="Designing employee tools for Chase's Home Lending vertical, helping advisors match customers with the right mortgage product. Led an AI-powered assistant POC that secured 5 years of additional team investment. Also converting Figma designs to code via Copilot for smoother developer handoffs."
+          photo={{
+            src: IMG_EY_PHOTO,
+            caption: "Celebratory gathering with the EY client",
+          }}
         />
         <WorkItem
           role="Senior Visual Designer"
           period="2021 - 2022"
           logo={
             <MaskedLogo
-              src={IMG_CANVA_LOGO} color="#1a1a14"
+              src={IMG_UXREACTOR_LOGO} color="#1a1a14"
               width={24} height={29}
               maskW={23.177} maskH={28.364}
             />
           }
           expanded={expanded === 2}
           onToggle={() => toggle(2)}
+          description="Description coming soon."
         />
         <WorkItem
           role="Systems Engineer"
@@ -332,6 +340,7 @@ export function AboutMeRightPage() {
           expanded={expanded === 3}
           onToggle={() => toggle(3)}
           hasBorder={false}
+          description="Description coming soon."
         />
       </div>
 
