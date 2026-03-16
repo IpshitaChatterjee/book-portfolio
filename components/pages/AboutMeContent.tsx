@@ -94,7 +94,7 @@ function WorkItem({ role, period, logo, expanded, onToggle, hasBorder = true, de
             fontFamily: "var(--font-geist-mono), monospace",
             fontSize: 12, lineHeight: "18px",
             color: "rgba(107,107,88,0.7)",
-            letterSpacing: "0.24px", margin: 0, marginTop: 20,
+            letterSpacing: "0.24px", margin: 0, marginTop: 4,
           }}>
             {period}
           </p>
