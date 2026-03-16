@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import TabStrip, { Section } from "@/components/Tabs/TabStrip";
+import TabStrip, { Section, SECTIONS } from "@/components/Tabs/TabStrip";
 import PageNav from "@/components/Navigation/PageNav";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -10,7 +10,13 @@ import PageNav from "@/components/Navigation/PageNav";
 const TOTAL_PAGES   = 12;
 const TOTAL_SPREADS = TOTAL_PAGES / 2; // 6
 
-const FLIP_DURATION = 0.6; // seconds — Apple Books is ~0.5–0.65s
+const FLIP_DURATION = 0.6;
+
+// ─── Section → Spread mapping ─────────────────────────────────────────────────
+
+const SECTION_SPREADS = Object.fromEntries(
+  SECTIONS.map((s, i) => [s, i])
+) as Record<Section, number>; // seconds — Apple Books is ~0.5–0.65s
 const FLIP_EASE     = [0.4, 0, 0.15, 1] as const; // snappy start, soft landing
 
 const PAPER_TEXTURE =
@@ -65,6 +71,13 @@ export default function Book({ pages = [] }: BookProps) {
     setPendingSpread(spread - 1);
     setFlipDir("prev");
     setIsFlipping(true);
+  };
+
+  const handleTabChange = (tab: Section) => {
+    if (isFlipping) return;
+    setActiveTab(tab);
+    const target = SECTION_SPREADS[tab];
+    if (target !== spread) setSpread(target);
   };
 
   const handleFlipComplete = () => {
@@ -252,7 +265,7 @@ export default function Book({ pages = [] }: BookProps) {
           </div>
 
           {/* ── Tab strip — direct child so left:1231px resolves to book container ── */}
-          <TabStrip activeTab={activeTab} onTabChange={setActiveTab} />
+          <TabStrip activeTab={activeTab} onTabChange={handleTabChange} />
 
         </div>
       </div>
