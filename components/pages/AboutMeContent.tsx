@@ -10,7 +10,7 @@ const IMG_STAR           = "/images/star.png";
 const IMG_CHASE_LOGO     = "/images/chase-logo.png";
 const IMG_CHASE_PHOTO    = "/images/chase-photo.jpg";
 const IMG_EY_LOGO        = "/images/ey-logo.png";
-const IMG_EY_PHOTO       = "/images/ey-photo.jpg";
+const IMG_EY_PHOTO       = "/images/ey-photo.png";
 const IMG_UXREACTOR_LOGO = "/images/uxreactor-logo.png";
 const IMG_INFOSYS_LOGO   = "/images/infosys-logo.png";
 
@@ -300,7 +300,7 @@ export function AboutMeRightPage() {
           }
           expanded={expanded === 1}
           onToggle={() => toggle(1)}
-          description="Designing employee tools for Chase's Home Lending vertical, helping advisors match customers with the right mortgage product. Led an AI-powered assistant POC that secured 5 years of additional team investment. Also converting Figma designs to code via Copilot for smoother developer handoffs."
+          description="Led product design for a large US B2B telco, driving 7.8M unique digital visitors and $6.4M in revenue through a redesign that improved usability, accessibility, and regulatory compliance. Delivered 25+ features and 5,000 design components across a 32-person cross-functional team spanning the US and Italy."
           photo={{
             src: IMG_EY_PHOTO,
             caption: "Celebratory gathering with the EY client",
@@ -318,7 +318,7 @@ export function AboutMeRightPage() {
           }
           expanded={expanded === 2}
           onToggle={() => toggle(2)}
-          description="Description coming soon."
+          description="At UXReactor, I designed complex data dashboards for a US-based data warehouse company, validated through two rounds of A/B testing. Also mentored three junior designers alongside leading a cross-functional team of 12."
         />
         <WorkItem
           role="Systems Engineer"
@@ -334,7 +334,7 @@ export function AboutMeRightPage() {
           expanded={expanded === 3}
           onToggle={() => toggle(3)}
           hasBorder={false}
-          description="Description coming soon."
+          description="Designed and developed LEX, Infosys's internal cross-platform ed-tech app for employee up-skilling. Added certifications, gamification, and feedback channels that drove a 20% increase in downloads."
         />
         </div>{/* end accordion */}
       </div>{/* end outer flex column */}
