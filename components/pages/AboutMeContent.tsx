@@ -94,7 +94,7 @@ function WorkItem({ role, period, logo, expanded, onToggle, hasBorder = true, de
             fontFamily: "var(--font-geist-mono), monospace",
             fontSize: 12, lineHeight: "18px",
             color: "rgba(107,107,88,0.7)",
-            letterSpacing: "0.24px", margin: 0,
+            letterSpacing: "0.24px", margin: 0, marginTop: 20,
           }}>
             {period}
           </p>
@@ -105,7 +105,7 @@ function WorkItem({ role, period, logo, expanded, onToggle, hasBorder = true, de
       {expanded && description && (
         <div style={{
           display: "flex", gap: 52, alignItems: "flex-start",
-          paddingLeft: 32, paddingBottom: 24, width: "100%",
+          paddingLeft: 32, paddingTop: 20, paddingBottom: 24, width: "100%",
         }}>
           <p style={{
             flex: "1 0 0", minWidth: 0,
