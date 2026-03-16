@@ -117,22 +117,16 @@ function WorkItem({ role, period, logo, expanded, onToggle, hasBorder = true, de
           </p>
           {photo && (
             <div style={{ display: "flex", flexDirection: "column", gap: 8, width: 211, flexShrink: 0 }}>
-              <div style={{ height: 150, width: "100%", overflow: "hidden", position: "relative", flexShrink: 0 }}>
-                <img
-                  src={photo.src}
-                  alt={photo.caption}
-                  style={{
-                    position: "absolute",
-                    height: "327.26%",
-                    left: "-53.96%",
-                    top: "-103.05%",
-                    width: "227.46%",
-                    maxWidth: "none",
-                    display: "block",
-                    filter: "grayscale(1)",
-                  }}
-                />
-              </div>
+              <img
+                src={photo.src}
+                alt={photo.caption}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  display: "block",
+                  filter: "grayscale(1)",
+                }}
+              />
               <p style={{
                 fontFamily: "var(--font-geist-sans), sans-serif",
                 fontSize: 10, lineHeight: "12px",
