@@ -248,8 +248,8 @@ export function AboutMeRightPage() {
 
       {/* Outer flex column — starts at the same 28px margin as the left page */}
       <div style={{
-        position: "absolute", left: 28, top: 28, right: 28,
-        display: "flex", flexDirection: "column", gap: 28,
+        position: "absolute", left: 28, top: 28, right: 28, bottom: 28,
+        display: "flex", flexDirection: "column", justifyContent: "space-between",
       }}>
 
         {/* Star icon + Main heading */}
