@@ -235,7 +235,7 @@ export function AboutMeLeftPage() {
 }
 
 // ─── Right Page ───────────────────────────────────────────────────────────────
-// All `left` values are relative to the right-page container (full-canvas left minus ~618px)
+// Single flex-column anchored at left:28, top:28 — mirrors the left page margin.
 
 export function AboutMeRightPage() {
   const [expanded, setExpanded] = useState<number | null>(0);
@@ -244,37 +244,35 @@ export function AboutMeRightPage() {
   return (
     <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
 
-      {/* Star icon + Main heading */}
+      {/* Outer flex column — starts at the same 28px margin as the left page */}
       <div style={{
-        position: "absolute", left: 120, top: 110,
-        display: "flex", gap: 7, alignItems: "center",
+        position: "absolute", left: 28, top: 28, right: 28,
+        display: "flex", flexDirection: "column", gap: 28,
       }}>
-        <div style={{
-          width: 35, height: 36, flexShrink: 0,
-          backgroundColor: "#6b6b58",
-          maskImage: `url('${IMG_STAR}')`,
-          WebkitMaskImage: `url('${IMG_STAR}')`,
-          maskSize: "35px 36px",
-          WebkitMaskSize: "35px 36px",
-          maskRepeat: "no-repeat",
-          WebkitMaskRepeat: "no-repeat",
-        } as React.CSSProperties} />
-        <p style={{
-          fontFamily: "'Geist Pixel', var(--font-geist-mono), monospace",
-          fontSize: 40, lineHeight: "48px",
-          color: "#1a1a14", margin: 0, fontStyle: "normal",
-          width: 420,
-        }}>
-          I build what I design
-        </p>
-      </div>
 
-      {/* Work Experience Accordion */}
-      <div style={{
-        position: "absolute", left: 122, top: 275,
-        width: 491,
-        display: "flex", flexDirection: "column",
-      }}>
+        {/* Star icon + Main heading */}
+        <div style={{ display: "flex", gap: 7, alignItems: "center" }}>
+          <div style={{
+            width: 35, height: 36, flexShrink: 0,
+            backgroundColor: "#6b6b58",
+            maskImage: `url('${IMG_STAR}')`,
+            WebkitMaskImage: `url('${IMG_STAR}')`,
+            maskSize: "35px 36px",
+            WebkitMaskSize: "35px 36px",
+            maskRepeat: "no-repeat",
+            WebkitMaskRepeat: "no-repeat",
+          } as React.CSSProperties} />
+          <p style={{
+            fontFamily: "'Geist Pixel', var(--font-geist-mono), monospace",
+            fontSize: 40, lineHeight: "48px",
+            color: "#1a1a14", margin: 0, fontStyle: "normal",
+          }}>
+            I build what I design
+          </p>
+        </div>
+
+        {/* Work Experience Accordion */}
+        <div style={{ display: "flex", flexDirection: "column" }}>
         <WorkItem
           role="Associate UX Designer"
           period="2025 - Present"
@@ -342,7 +340,8 @@ export function AboutMeRightPage() {
           hasBorder={false}
           description="Description coming soon."
         />
-      </div>
+        </div>{/* end accordion */}
+      </div>{/* end outer flex column */}
 
     </div>
   );
