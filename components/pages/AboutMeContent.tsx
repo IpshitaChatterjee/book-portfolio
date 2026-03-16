@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Plus, Minus } from "@phosphor-icons/react";
 
 // ─── Asset URLs (local — served from /public/images/) ─────────────────────────
 
@@ -12,8 +13,6 @@ const IMG_EY_LOGO        = "/images/ey-logo.png";
 const IMG_EY_PHOTO       = "/images/ey-photo.jpg";
 const IMG_UXREACTOR_LOGO = "/images/uxreactor-logo.png";
 const IMG_INFOSYS_LOGO   = "/images/infosys-logo.png";
-const IMG_MINUS          = "/images/minus.png";
-const IMG_PLUS           = "/images/plus.png";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -75,7 +74,10 @@ function WorkItem({ role, period, logo, expanded, onToggle, hasBorder = true, de
           pointerEvents: "auto",
         }}
       >
-        <img src={expanded ? IMG_MINUS : IMG_PLUS} alt="" style={{ width: 24, height: 24, flexShrink: 0, display: "block", filter: "grayscale(1)" }} />
+        {expanded
+          ? <Minus size={24} weight="light" color="#1a1a14" style={{ flexShrink: 0 }} />
+          : <Plus  size={24} weight="light" color="#1a1a14" style={{ flexShrink: 0 }} />
+        }
         <div style={{ flex: "1 0 0", display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%" }}>
             <p style={{
